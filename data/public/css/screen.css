@@ -1,0 +1,14 @@
+.starter-template {
+    padding: 60px 15px 0px;
+}
+
+.table-nonfluid {
+    width: auto !important;
+}
+
+.not-first-td-align-right tr td {
+    text-align: right;
+}
+.not-first-td-align-right tr td:first-child {
+    text-align: left;
+}

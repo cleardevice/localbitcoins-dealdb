@@ -1,0 +1,52 @@
+{% extends "layouts/default.twig" %}
+
+{# content #}
+{% block content %}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Fiat, RUB</th>
+        <th>Fiat, UAH</th>
+        <th>Fiat, USD</th>
+        <th>Provider</th>
+        <th>Price</th>
+        <th>Value, BTC</th>
+        <th>Comm, BTC</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key,deal in deals %}
+    <tr>
+        <td>{{ key+1 }}</td>
+        <td nowrap="nowrap">{{ deal.date }}</td>
+        <td>{{ deal.time }}</td>
+        <td>{% if deal.currency == 'RUB' %}{{ deal.value }}{% else %}&nbsp;{% endif %}</td>
+        <td>{% if deal.currency == 'UAH' %}{{ deal.value }}{% else %}&nbsp;{% endif %}</td>
+        <td>{% if deal.currency == 'USD' %}{{ deal.value }}{% else %}&nbsp;{% endif %}</td>
+        <td>{{ deal.provider }}</td>
+        <td>{{ deal.price }}</td>
+        <td>{{ deal.btc }}</td>
+        <td>{{ deal.commission }}</td>
+    </tr>
+    {% endfor %}
+
+    <tr class="info">
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>{{ stat.RUB }}</td>
+        <td>{{ stat.UAH }}</td>
+        <td>{{ stat.USD }}</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>{{ stat.BTC }}</td>
+        <td>{{ stat.COMMISSION }}</td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock %}

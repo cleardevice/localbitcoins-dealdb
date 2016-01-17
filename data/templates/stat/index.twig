@@ -1,0 +1,54 @@
+{% extends "layouts/default.twig" %}
+
+{# content #}
+{% block content %}
+
+<table class="table table-bordered table-striped table-nonfluid">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Balance</th>
+    </tr>
+    </thead>
+    <tbody class="not-first-td-align-right">
+    <tr>
+        <td>Fiat, RUB</td>
+        <td>{{ stat.RUB }}</td>
+        <td>{{ balance.RUB }}</td>
+    </tr>
+    <tr>
+        <td>Fiat, UAH</td>
+        <td>{{ stat.UAH }}</td>
+        <td>{{ balance.UAH }}</td>
+    </tr>
+    <tr>
+        <td>Fiat, USD</td>
+        <td>{{ stat.USD }}</td>
+        <td>{{ balance.USD }}</td>
+    </tr>
+    <tr>
+        <td>Sum, BTC</td>
+        <td>{{ stat.BTC }}</td>
+        <td>{{ balance.BTC }}</td>
+    </tr>
+    <tr>
+        <td>Comm, BTC</td>
+        <td>{{ stat.COMMISSION }}</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Qiwi, RUB</td>
+        <td>
+            <span class="label label-{% if 15000-qiwi > 4000 %}success
+            {% elseif 15000-qiwi > 2000 %}warning
+            {% else %}danger
+            {% endif %}">{{ 15000-qiwi }}</span>
+            <a type="button" data-toggle="confirmation" class="btn btn-xs btn-primary">New</a>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock %}

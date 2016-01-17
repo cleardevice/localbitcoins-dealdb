@@ -1,0 +1,51 @@
+{% extends "layouts/default.twig" %}
+
+{# content #}
+{% block content %}
+
+<form name="data" action="" method="post" autocomplete="off">
+    <fieldset>
+        <legend>Add deal</legend>
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="hidden" name="data[commission]" value="" />
+                <input type="checkbox" id="data-commission" name="data[commission]" value="1"
+                       {% if ( data.commission is not empty ) or ( data.commission is not defined ) %} checked="checked"{% endif %} />
+                <label for="data-commission">commission</label>
+            </div>
+        </div>
+
+        <div class="form-inline">
+            <div class="form-group">
+                <input type="number" step="any" id="data-value" name="data[value]" placeholder="Fiat value"
+                       class="form-control input-mini" autofocus="autofocus" required="true"
+                       value="{{ data.value }}" />
+            </div>
+            <div class="form-group">
+                <select id="data-currency" name="data[currency]" class="form-control input-mini" required="true">
+                    <option value="" disabled="disabled" selected="selected">Currency</option>
+                    <option{% if data.currency == 'RUB' %} selected="selected"{% endif %}>RUB</option>
+                    <option{% if data.currency == 'UAH' %} selected="selected"{% endif %}>UAH</option>
+                    <option{% if data.currency == 'USD' %} selected="selected"{% endif %}>USD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select id="data-provider" name="data[provider]" class="form-control input-mini" required="true">
+                    <option value="" disabled="disabled" selected="selected">Provider</option>
+                    <option{% if data.provider == 'QIWI' %} selected="selected"{% endif %}>QIWI</option>
+                    <option{% if data.provider == 'WM' %} selected="selected"{% endif %}>WM</option>
+                    <option{% if data.provider == 'PB' %} selected="selected"{% endif %}>PB</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="number" step="any" min="1" id="data-price" name="data[price]" placeholder="Fiat price"
+                       class="form-control input-mini" value="{{ data.price }}" required="true" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </fieldset>
+</form>
+
+{% endblock %}
