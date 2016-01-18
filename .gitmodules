@@ -1,0 +1,3 @@
+[submodule "docker/redis/docker-redis"]
+	path = docker/redis/docker-redis
+	url = https://github.com/cleardevice/redis.git
